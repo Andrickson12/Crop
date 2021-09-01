@@ -9,8 +9,6 @@ import UIKit
 
 class cropTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var segmentedControlBtn: UISegmentedControl!
-    
     //TableView
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -19,7 +17,7 @@ class cropTableView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }()
     
     //Hard-Coded tableView data
-    let tableContent = ["Areas of observation - please note concern(s) if any, as well as corrective action(s)","Surranding Areas/Adjacent Activities","Building Grounds","Building Structre","Water System", "Others"]
+    let tableContent = ["Surranding Areas/Adjacent Activities","Building Grounds","Building Structre","Water System", "Others"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +43,14 @@ class cropTableView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.textLabel?.text = tableContent[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Areas of observation - please note concern(s) if any, as well as corrective action(s)"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
